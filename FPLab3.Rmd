@@ -1,0 +1,16 @@
+---
+title: "FPLab2"
+author: 
+  - Makayla Whitney
+  - Joe Swinehart
+  - Janette Avelar
+  - David Fainstein
+  date: "5/10/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Lab 3 - Part A:
