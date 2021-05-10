@@ -13,4 +13,29 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## Lab 3 - Part A:
+## Lab 3 - Part A: Foundations
+Briefly name and describe the three fundamental components of a function.
+
+Describe three different ways functions can be stored/applied and an example of when you might want to use each version.
+
+
+## Part B: Applied practice
+
+Write a function to calculate the mean that removes missing data before conducting the calculation. You may not use base::mean or any similar function that conducts a mean calculation. Include a warning in your function if missing data have been removed that prints the total number of cases that were removed.
+
+Test your function to make sure it (a) provides the expected results, and (b) gives identical output to base::mean when na.rm = TRUE. Make sure that you test your data against a vector that has missing data.
+
+Turn the following three lines of code into three different functions. Make sure to give them meaningful names. Test the functions to make sure they provide the expected output.
+
+# Count number of missing elements in a vector
+sum(is.na(airquality$Ozone))
+
+# Proportional representation of each level (unique element) in a vector
+purrr::map_dbl(split(mtcars$cyl, mtcars$cyl), length) / length(mtcars$cyl)
+
+# normalize or z-score a vector so the mean is zero and sd is one
+(mtcars$mpg - mean(mtcars$mpg, na.rm = TRUE)) / 
+  sd(mtcars$mpg, na.rm = TRUE) 
+Write a function that takes a data frame as its input and returns a data frame with only the numeric columns.
+
+Write a function that uses the function you wrote in Question 5, and returns a data frame with the mean and standard deviation of each numeric column. If columns are omitted (because they are non-numeric), print a message stating the specific columns that were not included.
