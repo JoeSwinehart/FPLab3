@@ -1,11 +1,6 @@
 ---
-title: "FPLab2"
-author: 
-  - Makayla Whitney
-  - Joe Swinehart
-  - Janette Avelar
-  - David Fainstein
-  date: "5/10/2021"
+title: "FPLab3"
+Author: "Janette Avelar David Fainstein Joe Swinehart Makayla Whitney"
 output: html_document
 ---
 
@@ -15,6 +10,13 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ## Lab 3 - Part A: Foundations
 Briefly name and describe the three fundamental components of a function.
+
+the body(), the actual code inside the function, where you can see what's going on behind the curtain. For a cheap example of this, #body(body) works!
+
+the formals(), the arguments which are supplied the function. Fun fact...if you try to get formals for a primitive function, you get a NULL response.
+
+the environment(), the “map” of the location of the function’s variables. This is largely a mystery to us at this point.
+
 
 Describe three different ways functions can be stored/applied and an example of when you might want to use each version.
 
@@ -36,6 +38,7 @@ purrr::map_dbl(split(mtcars$cyl, mtcars$cyl), length) / length(mtcars$cyl)
 # normalize or z-score a vector so the mean is zero and sd is one
 (mtcars$mpg - mean(mtcars$mpg, na.rm = TRUE)) / 
   sd(mtcars$mpg, na.rm = TRUE) 
+
 Write a function that takes a data frame as its input and returns a data frame with only the numeric columns.
 
 Write a function that uses the function you wrote in Question 5, and returns a data frame with the mean and standard deviation of each numeric column. If columns are omitted (because they are non-numeric), print a message stating the specific columns that were not included.
