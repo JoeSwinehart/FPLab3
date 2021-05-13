@@ -8,6 +8,10 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+```{r}
+#test
+```
+
 ## Lab 3 - Part A: Foundations
 Briefly name and describe the three fundamental components of a function.
 
