@@ -8,12 +8,8 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-```{r}
-#test
-```
-
-## Lab 3 - Part A: Foundations
-Briefly name and describe the three fundamental components of a function.
+## Part A: Foundations
+**1. Briefly name and describe the three fundamental components of a function.**
 
 the body(), the actual code inside the function, where you can see what's going on behind the curtain. For a cheap example of this, #body(body) works!
 
@@ -21,8 +17,13 @@ the formals(), the arguments which are supplied the function. Fun fact...if you 
 
 the environment(), the “map” of the location of the function’s variables. This is largely a mystery to us at this point.
 
+**2. Describe three different ways functions can be stored/applied and an example of when you might want to use each version.**
 
-Describe three different ways functions can be stored/applied and an example of when you might want to use each version.
+Typically, functions are stored as objects by assigning them to a name. We do this the same way we store any other object in the R environment; using the `<-` operator. This can be considered the "go-to" storage for a function, after which we apply it as we would any other function: calling the function name, and passing necessary arguments within `()`.
+
+You don't have to store functions as objects, however. In some cases, it's beneficial to use anonymous functions that are not bound to names. To do this, we specify the function we want to use within a loop without assigning it to a name. Once it's run, it's done.
+
+The final way to save functions is to store them within a list. You access them as you would any other object within a list, by using subset operators like `$`, `[]`, or `[[]]`.
 
 
 ## Part B: Applied practice
