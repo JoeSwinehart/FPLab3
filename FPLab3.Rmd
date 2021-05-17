@@ -28,12 +28,35 @@ The final way to save functions is to store them within a list. You access them 
 
 ## Part B: Applied practice
 
-Write a function to calculate the mean that removes missing data before conducting the calculation. You may not use base::mean or any similar function that conducts a mean calculation. Include a warning in your function if missing data have been removed that prints the total number of cases that were removed.
+**1. Write a function to calculate the mean that removes missing data before conducting the calculation. You may not use base::mean or any similar function that conducts a mean calculation. Include a warning in your function if missing data have been removed that prints the total number of cases that were removed.**
 
-Test your function to make sure it (a) provides the expected results, and (b) gives identical output to base::mean when na.rm = TRUE. Make sure that you test your data against a vector that has missing data.
+```{r part b1}
+naless_mean <- function(x) {
+  if(is.na(x)) {
+    y <- na.omit(x)
+    z <- length(is.na(x))
+    a <- sum(y)/length(y)
+    warning("Missing values were found:", z, a)
+  }
+sum(x)/length(x)
+}
+```
 
-Turn the following three lines of code into three different functions. Make sure to give them meaningful names. Test the functions to make sure they provide the expected output.
 
+**2. Test your function to make sure it (a) provides the expected results, and (b) gives identical output to base::mean when na.rm = TRUE. Make sure that you test your data against a vector that has missing data.**
+
+```{r part b2}
+nums <- c(1, 5, 4, NA, NA, 9, 10)
+str(nums)
+naless_mean(nums)
+
+sum(nums, na.rm = TRUE)/length(nums)
+```
+
+
+**3. Turn the following three lines of code into three different functions. Make sure to give them meaningful names. Test the functions to make sure they provide the expected output.**
+
+```{r part b3}
 # Count number of missing elements in a vector
 sum(is.na(airquality$Ozone))
 
@@ -43,7 +66,17 @@ purrr::map_dbl(split(mtcars$cyl, mtcars$cyl), length) / length(mtcars$cyl)
 # normalize or z-score a vector so the mean is zero and sd is one
 (mtcars$mpg - mean(mtcars$mpg, na.rm = TRUE)) / 
   sd(mtcars$mpg, na.rm = TRUE) 
+```
 
-Write a function that takes a data frame as its input and returns a data frame with only the numeric columns.
+**4. Write a function that takes a data frame as its input and returns a data frame with only the numeric columns.**
 
-Write a function that uses the function you wrote in Question 5, and returns a data frame with the mean and standard deviation of each numeric column. If columns are omitted (because they are non-numeric), print a message stating the specific columns that were not included.
+```{r part b4}
+
+```
+
+**5. Write a function that uses the function you wrote in Question 5, and returns a data frame with the mean and standard deviation of each numeric column. If columns are omitted (because they are non-numeric), print a message stating the specific columns that were not included.**
+
+```{r part b5}
+
+```
+
