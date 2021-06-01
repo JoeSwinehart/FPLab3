@@ -6,6 +6,8 @@ output: html_document
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+
+library(purr)
 ```
 
 ## Part A: Foundations
@@ -60,17 +62,55 @@ sum(nums, na.rm = TRUE)/length(nums)
 # Count number of missing elements in a vector
 sum(is.na(airquality$Ozone))
 
+#function to count missing elements in a vector
+missing_els <- function(x){
+  mean(is.na(x))
+}
+
+#testing missing element function
+missing_els(c(rep(NA, 35), rnorm(85)))
+
 # Proportional representation of each level (unique element) in a vector
 purrr::map_dbl(split(mtcars$cyl, mtcars$cyl), length) / length(mtcars$cyl)
+
+#function to display proportional representation of each unique element in a vector
+proprep_els <- function(cars_v){
+  purrr::map_dbl(split(cars_v, cars_v), length) / (length(cars_v))
+}
+
+#testing proportional representation function
+proprep_els(rep(letters[1:4], each = 25))
 
 # normalize or z-score a vector so the mean is zero and sd is one
 (mtcars$mpg - mean(mtcars$mpg, na.rm = TRUE)) / 
   sd(mtcars$mpg, na.rm = TRUE) 
+
+#function to normalize a vector
+normalize_v <- function(x) {
+  if(any(is.na(x))) {
+    total_na <- sum(is.na(x))
+    warning(paste(total_na, "observations removed due to missing data"))
+    x <- na.omit(x)
+  }
+  (x - mean(x)) / sd(x)
+}
+
+#test function to normalize a vector
+test_normalize_v <- cbind(normalize_v(mtcars$mpg),
+                          na.omit(scale(mtcars$mpg)))
+
+identical(test_normalize_v[ ,1], test_normalize_v[ ,2])
+
+
 ```
 
 **4. Write a function that takes a data frame as its input and returns a data frame with only the numeric columns.**
 
 ```{r part b4}
+
+
+
+
 
 ```
 
