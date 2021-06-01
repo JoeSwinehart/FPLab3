@@ -126,27 +126,30 @@ starter <- data.frame("ID" = 1:7, "Age" = c("six", "7", "7", "5", "eight", "5", 
 ```{r part b5}
 
 mean_sd <- function(d_frame) {
+  #first, pull in numeric columns only
   numeric_cols <- numericdf(d_frame)
-  # numeric_cols %>% 
-  #   pivot_wider(.,
-  #               ) %>% 
-  #   group_by(a) %>% 
-  #   mutate(mean = mean(values),
-  #          sd = sd(values))
+  # then, pivot-group-summarize to get mean and sd
+  numeric_cols %>% 
+  pivot_longer(everything(),
+               names_to = "names",
+               values_to = "values") %>% 
+  group_by(names) %>% 
+  summarise(mean = mean(values),
+            sd = sd(values))
   
+  #finally, print warning that indicates how many and which columns were removed
   if(length(names(d_frame)) !=  length(names(numeric_cols))) {
-    message(length(d_frame) - length(numeric_cols), 
+    message(length(d_frame) - length(numeric_cols),
             " column(s) removed: ",
             setdiff(names(d_frame), names(numeric_cols)))
-    
+  
   }
+  
 }
 
-mean_sd(starter)
+b <- mean_sd(starter)
 
-a <- numericdf(starter) %>% 
-  pivot_wider(everything(),
-              names_from = "")
+
 
 
 ```
