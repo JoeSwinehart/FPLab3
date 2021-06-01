@@ -7,7 +7,8 @@ output: html_document
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 
-library(purr)
+library(purrr)
+library(tidyverse)
 ```
 
 ## Part A: Foundations
@@ -107,7 +108,7 @@ identical(test_normalize_v[ ,1], test_normalize_v[ ,2])
 
 ```{r part b4}
 
-
+numericdf <- fucntion(df)
 
 ```
 
