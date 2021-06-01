@@ -108,7 +108,16 @@ identical(test_normalize_v[ ,1], test_normalize_v[ ,2])
 
 ```{r part b4}
 
-numericdf <- fucntion(df)
+numericdf <- function(d_frame) {
+  check_num <- unlist(sapply(d_frame, is.numeric))
+  return(d_frame[,check_num])
+}
+
+#unlisting works now
+# Example data from scripting:
+# starter <- data.frame("ID" = 1:7, "Age" = c("6", "7", "7", "5", "8", "5", "7"), "Score" = 105:111)
+
+
 
 ```
 
