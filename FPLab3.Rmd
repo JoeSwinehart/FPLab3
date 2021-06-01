@@ -115,7 +115,7 @@ numericdf <- function(d_frame) {
 
 #unlisting works now
 # Example data from scripting:
-# starter <- data.frame("ID" = 1:7, "Age" = c("6", "7", "7", "5", "8", "5", "7"), "Score" = 105:111)
+starter <- data.frame("ID" = 1:7, "Age" = c("six", "7", "7", "5", "eight", "5", "7"), "Score" = 105:111)
 
 
 
@@ -124,6 +124,30 @@ numericdf <- function(d_frame) {
 **5. Write a function that uses the function you wrote in Question 5, and returns a data frame with the mean and standard deviation of each numeric column. If columns are omitted (because they are non-numeric), print a message stating the specific columns that were not included.**
 
 ```{r part b5}
+
+mean_sd <- function(d_frame) {
+  numeric_cols <- numericdf(d_frame)
+  # numeric_cols %>% 
+  #   pivot_wider(.,
+  #               ) %>% 
+  #   group_by(a) %>% 
+  #   mutate(mean = mean(values),
+  #          sd = sd(values))
+  
+  if(length(names(d_frame)) !=  length(names(numeric_cols))) {
+    message(length(d_frame) - length(numeric_cols), 
+            " column(s) removed: ",
+            setdiff(names(d_frame), names(numeric_cols)))
+    
+  }
+}
+
+mean_sd(starter)
+
+a <- numericdf(starter) %>% 
+  pivot_wider(everything(),
+              names_from = "")
+
 
 ```
 
