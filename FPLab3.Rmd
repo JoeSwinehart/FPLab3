@@ -34,7 +34,7 @@ The final way to save functions is to store them within a list. You access them 
 
 ```{r part b1}
 naless_mean <- function(x) {
-  if(is.na(x)) {
+  if(any(is.na(x))) {
     y <- na.omit(x)
     z <- length(is.na(x))
     a <- sum(y)/length(y)
@@ -42,17 +42,16 @@ naless_mean <- function(x) {
   }
 sum(x)/length(x)
 }
+
 ```
 
 
 **2. Test your function to make sure it (a) provides the expected results, and (b) gives identical output to base::mean when na.rm = TRUE. Make sure that you test your data against a vector that has missing data.**
 
 ```{r part b2}
-nums <- c(1, 5, 4, NA, NA, 9, 10)
-str(nums)
-naless_mean(nums)
+naless_mean(mtcars$mpg)
+mean(mtcars$mpg)
 
-sum(nums, na.rm = TRUE)/length(nums)
 ```
 
 
@@ -107,8 +106,6 @@ identical(test_normalize_v[ ,1], test_normalize_v[ ,2])
 **4. Write a function that takes a data frame as its input and returns a data frame with only the numeric columns.**
 
 ```{r part b4}
-
-
 
 
 
