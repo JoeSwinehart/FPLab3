@@ -115,7 +115,7 @@ numericdf <- function(d_frame) {
 
 #unlisting works now
 # Example data from scripting:
-starter <- data.frame("ID" = 1:7, "Age" = c("six", "7", "7", "5", "eight", "5", "7"), "Score" = 105:111)
+# starter <- data.frame("ID" = 1:7, "Age" = c("six", "7", "7", "5", "eight", "5", "7"), "Score" = 105:111)
 
 
 
@@ -128,6 +128,14 @@ starter <- data.frame("ID" = 1:7, "Age" = c("six", "7", "7", "5", "eight", "5", 
 mean_sd <- function(d_frame) {
   #first, pull in numeric columns only
   numeric_cols <- numericdf(d_frame)
+  
+  #then, print warning that indicates how many and which columns were removed
+  if(length(names(d_frame)) !=  length(names(numeric_cols))) {
+    message(length(d_frame) - length(numeric_cols),
+            " column(s) removed: ",
+            setdiff(names(d_frame), names(numeric_cols)))
+  
+  }
   # then, pivot-group-summarize to get mean and sd
   numeric_cols %>% 
   pivot_longer(everything(),
@@ -137,20 +145,11 @@ mean_sd <- function(d_frame) {
   summarise(mean = mean(values),
             sd = sd(values))
   
-  #finally, print warning that indicates how many and which columns were removed
-  if(length(names(d_frame)) !=  length(names(numeric_cols))) {
-    message(length(d_frame) - length(numeric_cols),
-            " column(s) removed: ",
-            setdiff(names(d_frame), names(numeric_cols)))
-  
-  }
   
 }
 
-b <- mean_sd(starter)
-
-
-
+# Trial with the above dataframe example
+# b <- mean_sd(starter)
 
 ```
 
